@@ -1,10 +1,10 @@
 node_modules/
 src/
+docs/
 
 .babelrc
 .gitignore
 yarn.lock
-webpack.config.js
 .github
 .releaserc.json
 CHANGELOG.md
