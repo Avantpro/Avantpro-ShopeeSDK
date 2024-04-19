@@ -1,6 +1,6 @@
 import { ShopeeSDKAuth } from './auth';
 import * as crypto from 'crypto';
-import { AxiosRequestConfig } from 'axios'
+import axios, { AxiosRequestConfig, AxiosResponse } from 'axios'
 
 interface ShopeeSDKConstructor {
   partnerId: string;
@@ -45,22 +45,16 @@ export class ShopeeSDK {
     return crypto.createHmac('sha256', this.partnerKey).update(baseString).digest('hex');
   }
 
-  async mekeShopeeRequet<T = any>(config:AxiosRequestConfig<T>){
-
+  async mekeShopeeRequet<T = any, R = AxiosResponse<T>, D = any>(config:AxiosRequestConfig<D>):Promise<R>{
     const timestamp = Math.floor(Date.now() / 1000);
-    // ReutrnURL.searchParams.append('partner_id',String(this.ShopeeSDK.partnerId))
-    // ReutrnURL.searchParams.append('timestamp',String(timestamp))
-    // ReutrnURL.searchParams.append('sign',this.ShopeeSDK.generateSign(path))
-    // ReutrnURL.searchParams.append('redirect',redirectUrl)
-
 
     config.params = config.params || {};
     config.params = {...config.params,
       partner_id:this.partnerId,
-      timestamp:String(timestamp),
+      timestamp:timestamp,
       sign:this.generateSign(config.url),
     }
 
-    return config
+    return axios.request(config)
   }
 }
