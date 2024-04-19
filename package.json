@@ -1,10 +1,10 @@
 {
-  "name": "shopee-sdk",
+  "name": "@avantpro/shopee-sdk",
   "version": "1.0.0",
   "main": "dist/index.js",
   "repository": "git@github.com:Avantpro/Avantpro-ShopeeSDK.git",
   "author": "Avantpro <>",
-  "license": "UNLICENSED",
+  "license": "ISC",
   "scripts": {
     "dev": "tsc --watch",
     "build": "tsc",
