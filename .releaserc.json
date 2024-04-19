@@ -57,9 +57,7 @@
     ],
     "@semantic-release/github",
     "@semantic-release/changelog",
-    ["@semantic-release/npm",{
-      "npmPublish":false
-    }],
+    "@semantic-release/npm",
     {
       "path": "@semantic-release/git",
       "assets": [
