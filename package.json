@@ -1,0 +1,29 @@
+{
+  "name": "shopee-sdk",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "repository": "git@github.com:Avantpro/Avantpro-ShopeeSDK.git",
+  "author": "Avantpro <>",
+  "license": "UNLICENSED",
+  "scripts": {
+    "dev": "tsc --watch",
+    "build": "tsc",
+    "release": "yarn build && semantic-release"
+  },
+  "devDependencies": {
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/commit-analyzer": "^12.0.0",
+    "@semantic-release/git": "^10.0.1",
+    "@semantic-release/github": "^10.0.3",
+    "@semantic-release/npm": "^12.0.0",
+    "@semantic-release/release-notes-generator": "^13.0.0",
+    "@types/node": "^20.11.17",
+    "conventional-changelog-conventionalcommits": "^7.0.2",
+    "semantic-release": "^23.0.0",
+    "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "axios": "^1.6.8",
+    "crypto": "^1.0.1"
+  }
+}
