@@ -8,15 +8,11 @@ interface ShopeeSDKConstructor {
   sandbox?: boolean;
 }
 
-
-
 export class ShopeeSDK {
-
   //base Config Shopee
   partnerId: number
   partnerKey: string
   host: string
-
 
   //SubClass Methods
   auth: ShopeeSDKAuth
@@ -57,4 +53,5 @@ export class ShopeeSDK {
 
     return axios.request(config)
   }
+  
 }

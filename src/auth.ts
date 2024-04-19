@@ -1,9 +1,27 @@
 import { ShopeeSDK } from "index";
 
-export class ShopeeSDKAuth {
-  private ShopeeSDK:ShopeeSDK
+type ShopeeSDKTokenresponse = { access_token: string, refresh_token: string, expire_in: number }
 
-  constructor(ShopeeSDK:ShopeeSDK){
+type ShopeeSDKRefreshTokenRequest = {
+  code: string;
+  ['main_account-id']: number;
+} | {
+  code: string;
+  shop_id: number;
+}
+
+type ShopeeSDKAccessTokenRequest = {
+  refresh_token: string;
+  ['main_account-id']: number;
+} | {
+  refresh_token: string;
+  shop_id: number;
+}
+
+export class ShopeeSDKAuth {
+  private ShopeeSDK: ShopeeSDK
+
+  constructor(ShopeeSDK: ShopeeSDK) {
     this.ShopeeSDK = ShopeeSDK;
   }
 
@@ -14,10 +32,10 @@ export class ShopeeSDKAuth {
     const ReutrnURL = new URL(this.ShopeeSDK.host)
     ReutrnURL.pathname = path;
 
-    ReutrnURL.searchParams.append('partner_id',String(this.ShopeeSDK.partnerId))
-    ReutrnURL.searchParams.append('timestamp',String(timestamp))
-    ReutrnURL.searchParams.append('sign',this.ShopeeSDK.generateSign(path))
-    ReutrnURL.searchParams.append('redirect',redirectUrl)
+    ReutrnURL.searchParams.append('partner_id', String(this.ShopeeSDK.partnerId))
+    ReutrnURL.searchParams.append('timestamp', String(timestamp))
+    ReutrnURL.searchParams.append('sign', this.ShopeeSDK.generateSign(path))
+    ReutrnURL.searchParams.append('redirect', redirectUrl)
 
     return ReutrnURL.toString()
   }
@@ -29,21 +47,62 @@ export class ShopeeSDKAuth {
     const ReutrnURL = new URL(this.ShopeeSDK.host)
     ReutrnURL.pathname = path;
 
-    ReutrnURL.searchParams.append('partner_id',String(this.ShopeeSDK.partnerId))
-    ReutrnURL.searchParams.append('timestamp',String(timestamp))
-    ReutrnURL.searchParams.append('sign',this.ShopeeSDK.generateSign(path))
-    ReutrnURL.searchParams.append('redirect',redirectUrl)
+    ReutrnURL.searchParams.append('partner_id', String(this.ShopeeSDK.partnerId))
+    ReutrnURL.searchParams.append('timestamp', String(timestamp))
+    ReutrnURL.searchParams.append('sign', this.ShopeeSDK.generateSign(path))
+    ReutrnURL.searchParams.append('redirect', redirectUrl)
 
     return ReutrnURL.toString()
   }
 
-  // async refreshAccessToken(){
-  //   const path = "/api/v2/auth/access_token/get";
+  async getRefreshToken(dados:ShopeeSDKRefreshTokenRequest):Promise<ShopeeSDKTokenresponse> {
+    const path = "/api/v2/auth/token/get";
 
-  //   return this.ShopeeSDK.mekeShopeeRequet({
-  //     baseURL:this.ShopeeSDK.host,
-  //     url:path,
-  //   })
-  // }
+    try {
+      const response = await this.ShopeeSDK.mekeShopeeRequet({
+        baseURL: this.ShopeeSDK.host,
+        url: path,
+        method: 'POST',
+        headers: {
+          "Content-Type": "application/json"
+        },
+        data: {
+          ...dados,
+          partner_id: this.ShopeeSDK.partnerId,
+        }
+      })
+
+      const { access_token, refresh_token, expire_in } = response.data;
+      return { access_token, refresh_token, expire_in };
+    } catch (error: any) {
+      if (!error.response) throw new Error(error.message)
+      throw new Error(error.response.data.message)
+    }
+  }
+
+  async getAccessToken(dados:ShopeeSDKAccessTokenRequest):Promise<ShopeeSDKTokenresponse> {
+    const path = "/api/v2/auth/access_token/get";
+
+    try {
+      const response = await this.ShopeeSDK.mekeShopeeRequet({
+        baseURL: this.ShopeeSDK.host,
+        url: path,
+        method: 'POST',
+        headers: {
+          "Content-Type": "application/json"
+        },
+        data: {
+          ...dados,
+          partner_id: this.ShopeeSDK.partnerId,
+        }
+      })
+
+      const { access_token, refresh_token, expire_in } = response.data;
+      return { access_token, refresh_token, expire_in };
+    } catch (error: any) {
+      if(!error.response) throw new Error(error.message)
+      throw new Error(error.response.data.message)
+    }
+  }
 
 }
