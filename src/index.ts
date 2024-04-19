@@ -1,6 +1,7 @@
-import { ShopeeSDKAuth } from './auth';
-import * as crypto from 'crypto';
+import * as crypto from 'node:crypto';
 import axios, { AxiosRequestConfig, AxiosResponse } from 'axios'
+import { ShopeeSDKAuth } from './auth';
+import { ShopeeSDKProduct } from './product';
 
 interface ShopeeSDKConstructor {
   partnerId: string;
@@ -16,6 +17,7 @@ export class ShopeeSDK {
 
   //SubClass Methods
   auth: ShopeeSDKAuth
+  product:ShopeeSDKProduct
 
   constructor(
     {
@@ -24,15 +26,14 @@ export class ShopeeSDK {
       sandbox = false
     }: ShopeeSDKConstructor
   ) {
-
     //base Config Shopee
     this.partnerId = Number(partnerId);
     this.partnerKey = partnerKey;
     this.host = sandbox ? 'https://partner.test-stable.shopeemobile.com' : 'https://partner.shopeemobile.com';
   
-  
     //SubClass Methods
     this.auth = new ShopeeSDKAuth(this)
+    this.product = new ShopeeSDKProduct(this)
   }
 
   generateSign(path:string){
@@ -53,5 +54,5 @@ export class ShopeeSDK {
 
     return axios.request(config)
   }
-  
+
 }

@@ -1,4 +1,4 @@
-import { ShopeeSDK } from "index";
+import { ShopeeSDK } from "./index";
 
 type ShopeeSDKTokenresponse = { access_token: string, refresh_token: string, expire_in: number }
 
