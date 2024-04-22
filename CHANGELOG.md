@@ -1,3 +1,15 @@
+## [1.0.1](https://github.com/Avantpro/Avantpro-ShopeeSDK/compare/v1.0.0...v1.0.1) (2024-04-22)
+
+
+### Documentação
+
+* ajustando formato da documantação ([808b200](https://github.com/Avantpro/Avantpro-ShopeeSDK/commit/808b200c37aa020c113fcd660f928fffe54a33b7))
+
+
+### Integração Contínua
+
+* ajustar publicação no NPM ([e68b1a5](https://github.com/Avantpro/Avantpro-ShopeeSDK/commit/e68b1a5cff0b710f2b9c3db4642f5384b761047a))
+
 ## 1.0.0 (2024-04-22)
 
 
