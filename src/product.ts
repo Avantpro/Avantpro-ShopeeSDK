@@ -22,7 +22,7 @@ export class ShopeeSDKProduct {
     this.ShopeeSDK = ShopeeSDK;
   }
 
-  async boost_item(items: Array<string | number>, shop_id: string | number, token: string) {
+  async boost_item(items: Array<string | number>, shop_id: string | number, access_token: string) {
     const path = '/api/v2/product/boost_item'
     if (items.length > 5) throw new Error('You can only boost 5 items at a time')
     if (items.length <= 5) throw new Error('Select at least one product')
@@ -37,7 +37,7 @@ export class ShopeeSDKProduct {
         },
         params: {
           shop_id,
-          access_token: token
+          access_token
         },
         data: {
           item_id_list: items,
@@ -65,7 +65,7 @@ export class ShopeeSDKProduct {
     update_time_from,
     update_time_to,
     item_status=['NORMAL','UNLIST']
-  }:get_item_list_config, shop_id: string | number, token: string){
+  }:get_item_list_config, shop_id: string | number, access_token: string){
     const path = '/api/v2/product/get_item_list'
     try {
 
@@ -77,8 +77,8 @@ export class ShopeeSDKProduct {
           "Content-Type": "application/json"
         },
         params:{
-          shop_id:110918,
-          access_token:'534174546d7666435749736955696d6c',
+          shop_id,
+          access_token,
           offset,
           page_size,
           update_time_from,
@@ -94,4 +94,6 @@ export class ShopeeSDKProduct {
       throw new Error(error.response.data.message)
     }
   }
+
+  
 }
