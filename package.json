@@ -8,6 +8,9 @@
   },
   "author": "Avantpro <>",
   "license": "ISC",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org"
+  },
   "scripts": {
     "dev": "tsc --watch",
     "build": "tsc",
