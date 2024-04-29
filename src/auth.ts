@@ -59,7 +59,7 @@ export class ShopeeSDKAuth {
     const path = "/api/v2/auth/token/get";
 
     try {
-      const response = await this.ShopeeSDK.mekeShopeeRequet({
+      const response = await this.ShopeeSDK.mekeShopeeRequest({
         baseURL: this.ShopeeSDK.host,
         url: path,
         method: 'POST',
@@ -84,7 +84,7 @@ export class ShopeeSDKAuth {
     const path = "/api/v2/auth/access_token/get";
 
     try {
-      const response = await this.ShopeeSDK.mekeShopeeRequet({
+      const response = await this.ShopeeSDK.mekeShopeeRequest({
         baseURL: this.ShopeeSDK.host,
         url: path,
         method: 'POST',

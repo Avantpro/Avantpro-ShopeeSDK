@@ -28,7 +28,7 @@ export class ShopeeSDKProduct {
     if (items.length <= 5) throw new Error('Select at least one product')
 
     try {
-      const response = await this.ShopeeSDK.mekeShopeeRequet({
+      const response = await this.ShopeeSDK.mekeShopeeRequest({
         baseURL: this.ShopeeSDK.host,
         url: path,
         method: 'POST',
@@ -69,7 +69,7 @@ export class ShopeeSDKProduct {
     const path = '/api/v2/product/get_item_list'
     try {
 
-      const response = await this.ShopeeSDK.mekeShopeeRequet({
+      const response = await this.ShopeeSDK.mekeShopeeRequest({
         baseURL: this.ShopeeSDK.host,
         url: path,
         method: 'GET',

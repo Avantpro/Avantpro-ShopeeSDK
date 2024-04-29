@@ -64,7 +64,7 @@ export class ShopeeSDK {
     return crypto.createHmac('sha256', this.partnerKey).update(baseString).digest('hex');
   }
 
-  async mekeShopeeRequet<T = any, R = AxiosResponse<T>, D = any>(config: AxiosRequestConfig<D>): Promise<R> {
+  async mekeShopeeRequest<T = any, R = AxiosResponse<T>, D = any>(config: AxiosRequestConfig<D>): Promise<R> {
     const timestamp = Math.floor(Date.now() / 1000);
 
     let sing = ''
