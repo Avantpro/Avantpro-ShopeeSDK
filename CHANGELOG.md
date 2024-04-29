@@ -1,3 +1,12 @@
+## [1.0.2](https://github.com/Avantpro/Avantpro-ShopeeSDK/compare/v1.0.1...v1.0.2) (2024-04-29)
+
+
+### Refatoração de Código
+
+* refactor access_token parameter name in boost_item and get_item_list methods in product.ts ([0a0f2b1](https://github.com/Avantpro/Avantpro-ShopeeSDK/commit/0a0f2b1fcdf4abf2aacc79dc3e8a3f378a08d4eb))
+* refactor code in tsconfig.json, auth.ts, and product.ts files ([14c2277](https://github.com/Avantpro/Avantpro-ShopeeSDK/commit/14c2277f6fe713c16eb62016c7cc70c2846668c4))
+* refactor method names in auth.ts and product.ts files ([43d3b15](https://github.com/Avantpro/Avantpro-ShopeeSDK/commit/43d3b151ec3a166ff0554d2ca459566571a9295a))
+
 ## [1.0.1](https://github.com/Avantpro/Avantpro-ShopeeSDK/compare/v1.0.0...v1.0.1) (2024-04-22)
 
 
