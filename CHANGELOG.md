@@ -1,3 +1,10 @@
+## [1.0.3](https://github.com/Avantpro/Avantpro-ShopeeSDK/compare/v1.0.2...v1.0.3) (2024-04-30)
+
+
+### Correções de Bugs
+
+* refactor access_token parameter name in makeShopeeRequest methods in index.ts ([b0970fe](https://github.com/Avantpro/Avantpro-ShopeeSDK/commit/b0970fe2e49f2d3da4ab726f0b83ce19ea2c853f))
+
 ## [1.0.2](https://github.com/Avantpro/Avantpro-ShopeeSDK/compare/v1.0.1...v1.0.2) (2024-04-29)
 
 
