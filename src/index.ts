@@ -69,7 +69,7 @@ export class ShopeeSDK {
 
     let sing = ''
 
-    if (config.params.access_token && config.params.shop_id){
+    if (config?.params?.access_token && config?.params?.shop_id){
       sing = this.generateSign(config.url, timestamp,`${config.params.access_token}${config.params.shop_id}`)
     } else {
       sing = this.generateSign(config.url, timestamp)
