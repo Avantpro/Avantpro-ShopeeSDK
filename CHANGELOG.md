@@ -1,3 +1,10 @@
+## [1.0.4](https://github.com/Avantpro/Avantpro-ShopeeSDK/compare/v1.0.3...v1.0.4) (2024-05-07)
+
+
+### Documentação
+
+* update package.json with description for ShopeeSDK ([f245957](https://github.com/Avantpro/Avantpro-ShopeeSDK/commit/f2459577d398c60455cd3285de240e5f09624268))
+
 ## [1.0.3](https://github.com/Avantpro/Avantpro-ShopeeSDK/compare/v1.0.2...v1.0.3) (2024-04-30)
 
 
