@@ -1,8 +1,9 @@
 {
   "name": "@avantpro/shopee-sdk",
+  "description": "O ShopeeSDK é uma poderosa ferramenta para integração com a API da plataforma Shopee",
   "version": "1.0.3",
   "main": "dist/index.js",
-  "types":"dist/index.d.ts",
+  "types": "dist/index.d.ts",
   "devEngines": {
     "node": "18.x || 20.x || 21.x"
   },
