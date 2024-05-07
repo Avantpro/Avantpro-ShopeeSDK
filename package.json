@@ -3,6 +3,9 @@
   "version": "1.0.3",
   "main": "dist/index.js",
   "types":"dist/index.d.ts",
+  "engines": {
+    "node": ">= 20.0.0"
+  },
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com/Avantpro/Avantpro-ShopeeSDK.git"
