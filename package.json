@@ -3,8 +3,8 @@
   "version": "1.0.3",
   "main": "dist/index.js",
   "types":"dist/index.d.ts",
-  "engines": {
-    "node": ">= 20.0.0"
+  "devEngines": {
+    "node": "18.x || 20.x || 21.x"
   },
   "repository": {
     "type": "git",
