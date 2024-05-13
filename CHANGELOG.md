@@ -1,3 +1,10 @@
+## [1.1.0](https://github.com/Avantpro/Avantpro-ShopeeSDK/compare/v1.0.4...v1.1.0) (2024-05-13)
+
+
+### Recursos
+
+* add logger module with colors and log levels support ([926041b](https://github.com/Avantpro/Avantpro-ShopeeSDK/commit/926041b9a66620cc6bbc9f2ae635097d7ea11bbe))
+
 ## [1.0.4](https://github.com/Avantpro/Avantpro-ShopeeSDK/compare/v1.0.3...v1.0.4) (2024-05-07)
 
 
