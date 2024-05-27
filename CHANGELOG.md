@@ -1,3 +1,14 @@
+## [1.1.1](https://github.com/Avantpro/Avantpro-ShopeeSDK/compare/v1.1.0...v1.1.1) (2024-05-27)
+
+
+### ⚠ BREAKING CHANGES
+
+* **index:** change mekeShopeeRequest name to makeRequest
+
+### Refatoração de Código
+
+* **index:** change request method name ([dd0dd1b](https://github.com/Avantpro/Avantpro-ShopeeSDK/commit/dd0dd1b25ab0b85e1a29305cf546f60ef47b64b3))
+
 ## [1.1.0](https://github.com/Avantpro/Avantpro-ShopeeSDK/compare/v1.0.4...v1.1.0) (2024-05-13)
 
 
