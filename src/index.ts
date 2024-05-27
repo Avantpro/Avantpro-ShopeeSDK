@@ -4,7 +4,7 @@ import { ShopeeSDKAuth } from './auth';
 import { ShopeeSDKProduct } from './product';
 import { Logger,ConsoleLoggerOptions, LogLevel } from './logger/index'
 
-type localType = 'defalt' | 'china' | 'brasil'
+type localType = 'default' | 'china' | 'brasil'
 
 interface ShopeeSDKConstructor {
   partnerId: string;
@@ -32,7 +32,7 @@ export class ShopeeSDK {
     {
       partnerId,
       partnerKey,
-      local = 'defalt',
+      local = 'default',
       sandbox = false,
       verbose = false
     }: ShopeeSDKConstructor
@@ -101,7 +101,7 @@ export class ShopeeSDK {
     return crypto.createHmac('sha256', this.partnerKey).update(baseString).digest('hex');
   }
 
-  async mekeShopeeRequest<T = any, R = AxiosResponse<T>, D = any>(config: AxiosRequestConfig<D>): Promise<R> {
+  async makeRequest<T = any, R = AxiosResponse<T>, D = any>(config: AxiosRequestConfig<D>): Promise<R> {
     const timestamp = Math.floor(Date.now() / 1000);
 
     let sing = ''

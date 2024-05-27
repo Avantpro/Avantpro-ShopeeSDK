@@ -25,10 +25,10 @@ export class ShopeeSDKProduct {
   async boost_item(items: Array<string | number>, shop_id: string | number, access_token: string) {
     const path = '/api/v2/product/boost_item'
     if (items.length > 5) throw new Error('You can only boost 5 items at a time')
-    if (items.length <= 5) throw new Error('Select at least one product')
+    if (items.length <= 0) throw new Error('Select at least one product')
 
     try {
-      const response = await this.ShopeeSDK.mekeShopeeRequest({
+      const response = await this.ShopeeSDK.makeRequest({
         baseURL: this.ShopeeSDK.host,
         url: path,
         method: 'POST',
@@ -69,7 +69,7 @@ export class ShopeeSDKProduct {
     const path = '/api/v2/product/get_item_list'
     try {
 
-      const response = await this.ShopeeSDK.mekeShopeeRequest({
+      const response = await this.ShopeeSDK.makeRequest({
         baseURL: this.ShopeeSDK.host,
         url: path,
         method: 'GET',
@@ -94,6 +94,4 @@ export class ShopeeSDKProduct {
       throw new Error(error.response.data.message)
     }
   }
-
-  
 }
