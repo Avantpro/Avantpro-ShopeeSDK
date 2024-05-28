@@ -11,11 +11,11 @@ type ShopeeSDKRefreshTokenRequest = {
 }
 
 type ShopeeSDKAccessTokenRequest = {
-  refresh_token: string;
   ['main_account-id']: number;
+  code: string;
 } | {
-  refresh_token: string;
   shop_id: number;
+  code: string;
 }
 
 export class ShopeeSDKAuth {
@@ -29,34 +29,34 @@ export class ShopeeSDKAuth {
     const path = "/api/v2/shop/auth_partner";
     const timestamp = Math.floor(Date.now() / 1000);
 
-    const ReutrnURL = new URL(this.ShopeeSDK.host)
-    ReutrnURL.pathname = path;
+    const ReturnURL = new URL(this.ShopeeSDK.host)
+    ReturnURL.pathname = path;
 
-    ReutrnURL.searchParams.append('partner_id', String(this.ShopeeSDK.partnerId))
-    ReutrnURL.searchParams.append('timestamp', String(timestamp))
-    ReutrnURL.searchParams.append('sign', this.ShopeeSDK.generateSign(path,timestamp))
-    ReutrnURL.searchParams.append('redirect', redirectUrl)
+    ReturnURL.searchParams.append('partner_id', String(this.ShopeeSDK.partnerId))
+    ReturnURL.searchParams.append('timestamp', String(timestamp))
+    ReturnURL.searchParams.append('sign', this.ShopeeSDK.generateSign(path,timestamp))
+    ReturnURL.searchParams.append('redirect', redirectUrl)
 
-    return ReutrnURL.toString()
+    return ReturnURL.toString()
   }
 
   getRemoveAuthorizationLink(redirectUrl: string): string {
     const path = "/api/v2/shop/cancel_auth_partner";
     const timestamp = Math.floor(Date.now() / 1000);
 
-    const ReutrnURL = new URL(this.ShopeeSDK.host)
-    ReutrnURL.pathname = path;
+    const ReturnURL = new URL(this.ShopeeSDK.host)
+    ReturnURL.pathname = path;
 
-    ReutrnURL.searchParams.append('partner_id', String(this.ShopeeSDK.partnerId))
-    ReutrnURL.searchParams.append('timestamp', String(timestamp))
-    ReutrnURL.searchParams.append('sign', this.ShopeeSDK.generateSign(path,timestamp))
-    ReutrnURL.searchParams.append('redirect', redirectUrl)
+    ReturnURL.searchParams.append('partner_id', String(this.ShopeeSDK.partnerId))
+    ReturnURL.searchParams.append('timestamp', String(timestamp))
+    ReturnURL.searchParams.append('sign', this.ShopeeSDK.generateSign(path,timestamp))
+    ReturnURL.searchParams.append('redirect', redirectUrl)
 
-    return ReutrnURL.toString()
+    return ReturnURL.toString()
   }
 
   async getRefreshToken(dados:ShopeeSDKRefreshTokenRequest):Promise<ShopeeSDKTokenresponse> {
-    const path = "/api/v2/auth/token/get";
+    const path = "/api/v2/auth/access_token/get";
 
     try {
       const response = await this.ShopeeSDK.makeRequest({
@@ -81,8 +81,8 @@ export class ShopeeSDKAuth {
   }
 
   async getAccessToken(dados:ShopeeSDKAccessTokenRequest):Promise<ShopeeSDKTokenresponse> {
-    const path = "/api/v2/auth/access_token/get";
-
+    const path = "/api/v2/auth/token/get";
+    console.log(dados)
     try {
       const response = await this.ShopeeSDK.makeRequest({
         baseURL: this.ShopeeSDK.host,
@@ -96,7 +96,7 @@ export class ShopeeSDKAuth {
           partner_id: this.ShopeeSDK.partnerId,
         }
       })
-
+      console.log(response.data)
       const { access_token, refresh_token, expire_in } = response.data;
       return { access_token, refresh_token, expire_in };
     } catch (error: any) {
