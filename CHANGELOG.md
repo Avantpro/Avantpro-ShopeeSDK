@@ -1,3 +1,10 @@
+## [1.1.2](https://github.com/Avantpro/Avantpro-ShopeeSDK/compare/v1.1.1...v1.1.2) (2024-05-28)
+
+
+### Correções de Bugs
+
+* **auth:** change getAccessToken e refreshToken route paths ([d1e5407](https://github.com/Avantpro/Avantpro-ShopeeSDK/commit/d1e540704e3618f3a789f4a46ffaea662093aa09))
+
 ## [1.1.1](https://github.com/Avantpro/Avantpro-ShopeeSDK/compare/v1.1.0...v1.1.1) (2024-05-27)
 
 
