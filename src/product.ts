@@ -5,22 +5,18 @@ type boostFailure = {
   failed_reason: string;
 }
 
-type item_status = 'NORMAL'|'BANNED'|'UNLIST'|'REVIEWING'|'SELLER_DELETE'|'SHOPEE_DELETE'
+type item_status = 'NORMAL' | 'BANNED' | 'UNLIST' | 'REVIEWING' | 'SELLER_DELETE' | 'SHOPEE_DELETE'
 
 type get_item_list_config = {
   offset: number;
-  page_size:number;
+  page_size: number;
   update_time_from: number;
   update_time_to: number;
-  item_status:item_status[];
+  item_status: item_status[];
 }
 
 export class ShopeeSDKProduct {
-  private ShopeeSDK: ShopeeSDK
-
-  constructor(ShopeeSDK: ShopeeSDK) {
-    this.ShopeeSDK = ShopeeSDK;
-  }
+  constructor(private ShopeeSDK: ShopeeSDK) { }
 
   async boost_item(items: Array<string | number>, shop_id: string | number, access_token: string) {
     const path = '/api/v2/product/boost_item'
@@ -44,7 +40,7 @@ export class ShopeeSDKProduct {
         }
       })
 
-      if (response?.data?.error){
+      if (response?.data?.error) {
         throw new Error(response.data.error)
       }
 
@@ -64,8 +60,8 @@ export class ShopeeSDKProduct {
     page_size = 10,
     update_time_from,
     update_time_to,
-    item_status=['NORMAL','UNLIST']
-  }:get_item_list_config, shop_id: string | number, access_token: string){
+    item_status = ['NORMAL', 'UNLIST']
+  }: get_item_list_config, shop_id: string | number, access_token: string) {
     const path = '/api/v2/product/get_item_list'
     try {
 
@@ -76,20 +72,20 @@ export class ShopeeSDKProduct {
         headers: {
           "Content-Type": "application/json"
         },
-        params:{
+        params: {
           shop_id,
           access_token,
           offset,
           page_size,
           update_time_from,
           update_time_to,
-          item_status:item_status
+          item_status: item_status
         }
       })
 
       return response.data;
-      
-    } catch (error:any) {      
+
+    } catch (error: any) {
       if (!error.response) throw new Error(error.message)
       throw new Error(error.response.data.message)
     }
