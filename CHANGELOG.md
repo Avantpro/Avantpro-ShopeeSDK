@@ -1,3 +1,15 @@
+## [1.1.3](https://github.com/Avantpro/Avantpro-ShopeeSDK/compare/v1.1.2...v1.1.3) (2024-05-31)
+
+
+### Correções de Bugs
+
+* **auth:** fix inverted token function names ([e4c34ee](https://github.com/Avantpro/Avantpro-ShopeeSDK/commit/e4c34ee1762e885b323ad083abd84d472ce576d3))
+
+
+### Refatoração de Código
+
+* refactor ShopeeSDKAuth and ShopeeSDKProduct constructors ([a07a8da](https://github.com/Avantpro/Avantpro-ShopeeSDK/commit/a07a8dabc501119d72ca726edf0b07791f0cf133))
+
 ## [1.1.2](https://github.com/Avantpro/Avantpro-ShopeeSDK/compare/v1.1.1...v1.1.2) (2024-05-28)
 
 
