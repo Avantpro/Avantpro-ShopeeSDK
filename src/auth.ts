@@ -2,15 +2,15 @@ import { ShopeeSDK } from "./index";
 
 type ShopeeSDKTokenresponse = { access_token: string, refresh_token: string, expire_in: number }
 
-type ShopeeSDKRefreshTokenRequest = {
-  code: string;
+type ShopeeSDKAccessTokenRequest = {
+  refresh_token: string;
   ['main_account-id']: number;
 } | {
-  code: string;
+  refresh_token: string;
   shop_id: number;
 }
 
-type ShopeeSDKAccessTokenRequest = {
+type ShopeeSDKRefreshTokenRequest = {
   ['main_account-id']: number;
   code: string;
 } | {
@@ -34,7 +34,7 @@ export class ShopeeSDKAuth {
 
     ReturnURL.searchParams.append('partner_id', String(this.ShopeeSDK.partnerId))
     ReturnURL.searchParams.append('timestamp', String(timestamp))
-    ReturnURL.searchParams.append('sign', this.ShopeeSDK.generateSign(path,timestamp))
+    ReturnURL.searchParams.append('sign', this.ShopeeSDK.generateSign(path))
     ReturnURL.searchParams.append('redirect', redirectUrl)
 
     return ReturnURL.toString()
@@ -49,14 +49,14 @@ export class ShopeeSDKAuth {
 
     ReturnURL.searchParams.append('partner_id', String(this.ShopeeSDK.partnerId))
     ReturnURL.searchParams.append('timestamp', String(timestamp))
-    ReturnURL.searchParams.append('sign', this.ShopeeSDK.generateSign(path,timestamp))
+    ReturnURL.searchParams.append('sign', this.ShopeeSDK.generateSign(path))
     ReturnURL.searchParams.append('redirect', redirectUrl)
 
     return ReturnURL.toString()
   }
 
   async getRefreshToken(dados:ShopeeSDKRefreshTokenRequest):Promise<ShopeeSDKTokenresponse> {
-    const path = "/api/v2/auth/access_token/get";
+    const path = "/api/v2/auth/token/get";
 
     try {
       const response = await this.ShopeeSDK.makeRequest({
@@ -81,7 +81,7 @@ export class ShopeeSDKAuth {
   }
 
   async getAccessToken(dados:ShopeeSDKAccessTokenRequest):Promise<ShopeeSDKTokenresponse> {
-    const path = "/api/v2/auth/token/get";
+    const path = "/api/v2/auth/access_token/get";
     console.log(dados)
     try {
       const response = await this.ShopeeSDK.makeRequest({
