@@ -82,7 +82,6 @@ export class ShopeeSDKAuth {
 
   async getAccessToken(dados:ShopeeSDKAccessTokenRequest):Promise<ShopeeSDKTokenresponse> {
     const path = "/api/v2/auth/access_token/get";
-    console.log(dados)
     try {
       const response = await this.ShopeeSDK.makeRequest({
         baseURL: this.ShopeeSDK.host,
@@ -96,7 +95,7 @@ export class ShopeeSDKAuth {
           partner_id: this.ShopeeSDK.partnerId,
         }
       })
-      console.log(response.data)
+      if(response.data.error) throw new Error(response.data.message)
       const { access_token, refresh_token, expire_in } = response.data;
       return { access_token, refresh_token, expire_in };
     } catch (error: any) {

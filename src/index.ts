@@ -3,6 +3,8 @@ import axios, { AxiosRequestConfig, AxiosResponse } from 'axios'
 import { ShopeeSDKAuth } from './auth';
 import { ShopeeSDKProduct } from './product';
 import { Logger,ConsoleLoggerOptions, LogLevel } from './logger/index'
+import { ShopeeSDKShop } from './shop';
+import { ShopeeSDKLogistics } from './logistics';
 
 type localType = 'default' | 'china' | 'brasil'
 
@@ -27,6 +29,8 @@ export class ShopeeSDK {
   //SubClass Methods
   auth: ShopeeSDKAuth
   product: ShopeeSDKProduct
+  shop: ShopeeSDKShop
+  logistics: ShopeeSDKLogistics
 
   constructor(
     {
@@ -76,6 +80,8 @@ export class ShopeeSDK {
     //SubClass Methods
     this.auth = new ShopeeSDKAuth(this)
     this.product = new ShopeeSDKProduct(this)
+    this.shop = new ShopeeSDKShop(this)
+    this.logistics = new ShopeeSDKLogistics(this)
   }
 
   private getURL(sandbox: boolean, local: localType): string {
@@ -96,28 +102,28 @@ export class ShopeeSDK {
     return 'https://partner.shopeemobile.com';
   }
 
-  generateSign(path: string, timestamp: number, extraString?: string): string {
+  generateSign(path: string, extraString?: string, paramTimestamp?: number): string {
+    const timestamp = paramTimestamp || Math.floor(Date.now() / 1000);
     const baseString = `${this.partnerId}${path}${timestamp}${extraString || ''}`;
     return crypto.createHmac('sha256', this.partnerKey).update(baseString).digest('hex');
   }
 
   async makeRequest<T = any, R = AxiosResponse<T>, D = any>(config: AxiosRequestConfig<D>): Promise<R> {
-    const timestamp = Math.floor(Date.now() / 1000);
+    const timestamp = config.params?.timestamp || Math.floor(Date.now() / 1000);
 
-    let sing = ''
+    let sign = ''
 
     if (config?.params?.access_token && config?.params?.shop_id) {
-      sing = this.generateSign(config.url, timestamp, `${config.params.access_token}${config.params.shop_id}`)
+      sign = this.generateSign(config.url, `${config.params.access_token}${config.params.shop_id}`)
     } else {
-      sing = this.generateSign(config.url, timestamp)
+      sign = this.generateSign(config.url)
     }
-
     config.params = config.params || {};
     config.params = {
-      ...config.params,
       partner_id: this.partnerId,
       timestamp: timestamp,
-      sign: sing,
+      sign: config.params.sign || sign,
+      ...config.params,
     }
 
     const Serializer = (params: any) => {

@@ -19,7 +19,8 @@
   "scripts": {
     "dev": "tsc --watch ./src/index.ts",
     "build": "tsc",
-    "release": "yarn build && semantic-release"
+    "release": "yarn build && semantic-release",
+    "play": "tsc && node ./dist/playground.js"
   },
   "devDependencies": {
     "@semantic-release/changelog": "^6.0.3",
