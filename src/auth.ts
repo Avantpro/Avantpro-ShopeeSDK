@@ -30,7 +30,7 @@ export class ShopeeSDKAuth {
 
     ReturnURL.searchParams.append('partner_id', String(this.ShopeeSDK.partnerId))
     ReturnURL.searchParams.append('timestamp', String(timestamp))
-    ReturnURL.searchParams.append('sign', this.ShopeeSDK.generateSign(path,timestamp))
+    ReturnURL.searchParams.append('sign', this.ShopeeSDK.generateSign(path))
     ReturnURL.searchParams.append('redirect', redirectUrl)
 
     return ReturnURL.toString()
@@ -45,7 +45,7 @@ export class ShopeeSDKAuth {
 
     ReturnURL.searchParams.append('partner_id', String(this.ShopeeSDK.partnerId))
     ReturnURL.searchParams.append('timestamp', String(timestamp))
-    ReturnURL.searchParams.append('sign', this.ShopeeSDK.generateSign(path,timestamp))
+    ReturnURL.searchParams.append('sign', this.ShopeeSDK.generateSign(path))
     ReturnURL.searchParams.append('redirect', redirectUrl)
 
     return ReturnURL.toString()

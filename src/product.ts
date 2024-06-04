@@ -1,10 +1,10 @@
 import { IShopeeItem } from "./types/ShopeeItem";
 import { ShopeeSDK } from "./index";
 
-// type boostFailure = {
-//   item_id: number;
-//   failed_reason: string;
-// }
+type boostFailure = {
+  item_id: number;
+  failed_reason: string;
+}
 
 type item_status = 'NORMAL' | 'BANNED' | 'UNLIST' | 'REVIEWING' | 'SELLER_DELETE' | 'SHOPEE_DELETE'
 
@@ -108,7 +108,7 @@ export class ShopeeSDKProduct {
     }
   }
 
-  /*async boostItem(shop_id: string | number, access_token: string, items: Array<string | number>) {
+  async boostItem(shop_id: string | number, access_token: string, items: Array<string | number>) {
     const path = '/api/v2/product/boost_item'
     if (items.length > 5) throw new Error('You can only boost 5 items at a time')
     if (items.length <= 0) throw new Error('Select at least one product')
@@ -144,5 +144,5 @@ export class ShopeeSDKProduct {
       throw new Error(error.response.data.message)
     }
 
-  }*/
+  }
 }
