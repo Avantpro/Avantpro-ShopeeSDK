@@ -19,11 +19,7 @@ type ShopeeSDKRefreshTokenRequest = {
 }
 
 export class ShopeeSDKAuth {
-  private ShopeeSDK: ShopeeSDK
-
-  constructor(ShopeeSDK: ShopeeSDK) {
-    this.ShopeeSDK = ShopeeSDK;
-  }
+  constructor(private ShopeeSDK: ShopeeSDK) {}
 
   getAuthorizationLink(redirectUrl: string): string {
     const path = "/api/v2/shop/auth_partner";
@@ -34,7 +30,7 @@ export class ShopeeSDKAuth {
 
     ReturnURL.searchParams.append('partner_id', String(this.ShopeeSDK.partnerId))
     ReturnURL.searchParams.append('timestamp', String(timestamp))
-    ReturnURL.searchParams.append('sign', this.ShopeeSDK.generateSign(path))
+    ReturnURL.searchParams.append('sign', this.ShopeeSDK.generateSign(path,timestamp))
     ReturnURL.searchParams.append('redirect', redirectUrl)
 
     return ReturnURL.toString()
@@ -49,7 +45,7 @@ export class ShopeeSDKAuth {
 
     ReturnURL.searchParams.append('partner_id', String(this.ShopeeSDK.partnerId))
     ReturnURL.searchParams.append('timestamp', String(timestamp))
-    ReturnURL.searchParams.append('sign', this.ShopeeSDK.generateSign(path))
+    ReturnURL.searchParams.append('sign', this.ShopeeSDK.generateSign(path,timestamp))
     ReturnURL.searchParams.append('redirect', redirectUrl)
 
     return ReturnURL.toString()

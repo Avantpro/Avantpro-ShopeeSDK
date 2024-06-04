@@ -1,12 +1,12 @@
 import { IShopeeItem } from "./types/ShopeeItem";
 import { ShopeeSDK } from "./index";
 
-type boostFailure = {
-  item_id: number;
-  failed_reason: string;
-}
+// type boostFailure = {
+//   item_id: number;
+//   failed_reason: string;
+// }
 
-type item_status = 'NORMAL'|'BANNED'|'UNLIST'|'REVIEWING'|'SELLER_DELETE'|'SHOPEE_DELETE'
+type item_status = 'NORMAL' | 'BANNED' | 'UNLIST' | 'REVIEWING' | 'SELLER_DELETE' | 'SHOPEE_DELETE'
 
 type get_item_list_config = {
   offset?: number;
@@ -17,11 +17,7 @@ type get_item_list_config = {
 }
 
 export class ShopeeSDKProduct {
-  private ShopeeSDK: ShopeeSDK
-
-  constructor(ShopeeSDK: ShopeeSDK) {
-    this.ShopeeSDK = ShopeeSDK;
-  }
+  constructor(private ShopeeSDK: ShopeeSDK) { }
 
   async addItem(shop_id: string | number, access_token: string, item: IShopeeItem){
     const path = '/api/v2/product/add_item'
