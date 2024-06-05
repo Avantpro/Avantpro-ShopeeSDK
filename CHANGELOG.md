@@ -1,3 +1,17 @@
+## [1.2.0](https://github.com/Avantpro/Avantpro-ShopeeSDK/compare/v1.1.3...v1.2.0) (2024-06-05)
+
+
+### Recursos
+
+* **product:** add boostItems ([1e37e21](https://github.com/Avantpro/Avantpro-ShopeeSDK/commit/1e37e2183b17a3da90fa818d85da206e333643a6))
+* **product&shop:** add item, categories and logistics listing and add getshopinfo ([4e018da](https://github.com/Avantpro/Avantpro-ShopeeSDK/commit/4e018dada766a9b06339f23a6cfad76c7e60a042))
+
+
+### Correções de Bugs
+
+* **product:** brand name empty error fixed ([c0b06a2](https://github.com/Avantpro/Avantpro-ShopeeSDK/commit/c0b06a282aeff73f498eee34480ba6c446e7c4f2))
+* **product:** empty brand field error ([7171c61](https://github.com/Avantpro/Avantpro-ShopeeSDK/commit/7171c6150a6fc347dc9af4b81cfe97dd661d800b))
+
 ## [1.1.3](https://github.com/Avantpro/Avantpro-ShopeeSDK/compare/v1.1.2...v1.1.3) (2024-05-31)
 
 
