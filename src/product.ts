@@ -20,6 +20,12 @@ export class ShopeeSDKProduct {
   constructor(private ShopeeSDK: ShopeeSDK) { }
 
   async addItem(shop_id: string | number, access_token: string, item: IShopeeItem){
+    if(!item.brand) {
+      item.brand = {
+        brand_id: 0,
+        original_brand_name: ''
+      }
+    }
     const path = '/api/v2/product/add_item'
     try {
       const response = await this.ShopeeSDK.makeRequest({

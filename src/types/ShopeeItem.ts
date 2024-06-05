@@ -26,8 +26,8 @@ export interface IShopeeItem {
   wholesale?: IWholesale[];
   video_upload_id?: string[];
   brand?: {
-      brand_id: number;
-      original_brand_name: string;
+    brand_id: number;
+    original_brand_name: string;
   };
   item_dangerous?: number;
   tax_info?: ITaxInfo;
